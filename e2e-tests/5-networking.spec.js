@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-test('should be able to read a response body', async ({ page }) => {
+test('should be able to read a response body @T98de22aa', async ({ page }) => {
   const response = await page.request.get('https://api.github.com/repos/microsoft/playwright');
   const body = await response.json();
 
@@ -8,8 +8,8 @@ test('should be able to read a response body', async ({ page }) => {
   expect(body.name).toBe('playwright');
 });
 
-test.describe('mocked responses', () => {
-  test('be able to mock responses', async ({ page }) => {
+test.describe('mocked responses @S4473eca3', () => {
+  test('be able to mock responses @T37ad5672', async ({ page }) => {
     await page.route('**/api/todos', (route) =>
       route.fulfill({
         status: 200,

@@ -4,7 +4,7 @@ test.beforeEach(async ({ page }) => {
   await page.goto('https://todomvc.com/examples/vanilla-es6/');
 });
 
-test('basic interaction', async ({ page }) => {
+test('basic interaction @Tb03070c3', async ({ page }) => {
   const inputBox = page.locator('input.new-todo');
   const todoList = page.locator('.todo-list');
 
@@ -15,7 +15,7 @@ test('basic interaction', async ({ page }) => {
   await expect(todoList).not.toHaveText('Learn Playwright');
 });
 
-test('element selectors', async ({ page }) => {
+test('element selectors @T185feaf1', async ({ page }) => {
   const inputBox = page.locator('input.new-todo');
 
   await inputBox.fill('Buy milk');

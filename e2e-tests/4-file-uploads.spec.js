@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-test('should be able to upload files', async ({ page }) => {
+test('should be able to upload files @Tbc3a45df', async ({ page }) => {
   await page.goto('https://the-internet.herokuapp.com/upload');
 
   await page.setInputFiles('#file-upload', 'fixtures/report.csv');
