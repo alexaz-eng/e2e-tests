@@ -18,9 +18,10 @@ creator: a.zelenko21@gmail.com
 
 ### Steps
 Open the app
-Type "Buy milk" in the input
+Type "Buy milk" in the "What needs to be done?" input
 Press Enter
 Item appears in the list
+Counter shows "1 item left"
 
 <!-- test
 id: @Tfb3d9b1c
