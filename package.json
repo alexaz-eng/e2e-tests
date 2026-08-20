@@ -1,0 +1,13 @@
+{
+  "name": "testomat-demo-tests",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Demo Playwright test suite for Testomat.io GitHub integration screenshots",
+  "scripts": {
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.62.1",
+    "@testomatio/reporter": "^2.14.0"
+  }
+}
