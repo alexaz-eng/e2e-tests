@@ -1,11 +1,11 @@
 const { test, expect } = require('@playwright/test');
 
 test('should be able to read a response body @T98de22aa', async ({ page }) => {
-  const response = await page.request.get('https://api.github.com/repos/microsoft/playwright');
-  const body = await response.json();
+  const response = await page.request.get('https://demo.playwright.dev/todomvc/');
+  const body = await response.text();
 
   expect(response.status()).toBe(200);
-  expect(body.name).toBe('playwright');
+  expect(body).toContain('TodoMVC');
 });
 
 test.describe('mocked responses @S4473eca3', () => {
@@ -18,7 +18,7 @@ test.describe('mocked responses @S4473eca3', () => {
       })
     );
 
-    await page.goto('https://todomvc.com/examples/vanilla-es6/');
-    await expect(page.locator('input.new-todo')).toBeVisible();
+    await page.goto('https://demo.playwright.dev/todomvc/');
+    await expect(page.getByPlaceholder('What needs to be done?')).toBeVisible();
   });
 });

@@ -1,9 +1,9 @@
 const { test, expect } = require('@playwright/test');
 
 test('should be able to use assertions @T9e5afd58', async ({ page }) => {
-  await page.goto('https://todomvc.com/examples/vanilla-es6/');
+  await page.goto('https://demo.playwright.dev/todomvc/');
 
-  await expect(page.locator('.header h1')).toHaveText('todos');
-  await expect(page.locator('input.new-todo')).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'todos' })).toBeVisible();
+  await expect(page.getByPlaceholder('What needs to be done?')).toBeVisible();
   await expect(page.locator('.todo-list li')).toHaveCount(0);
 });
