@@ -1,0 +1,20 @@
+stages:
+  - test
+
+test_job:
+  stage: test
+  image: node:20
+  before_script:
+    - npm install
+    - npx playwright install --with-deps chromium
+  script:
+    # Variables passed by Testomat.io when the pipeline is triggered from the UI
+    - export TESTOMATIO="${testomatio}"
+    - export TESTOMATIO_URL="${testomatio_url}"
+    - export TESTOMATIO_RUN="${run}"
+    - npx playwright test --grep "${grep}"
+  rules:
+    # Launched from Testomat.io (Runs -> Run Automated Tests in CI)
+    - if: $CI_PIPELINE_SOURCE == "trigger"
+    # Report results into the merge request comment (GitLab Pipe)
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
