@@ -8,9 +8,11 @@ test_job:
     - npm install
     - npx playwright install --with-deps chromium
   script:
-    # Variables passed by Testomat.io when the pipeline is triggered from the UI
-    - export TESTOMATIO="${testomatio}"
-    - export TESTOMATIO_URL="${testomatio_url}"
+    # `testomatio`, `testomatio_url`, `run` and `grep` are passed by Testomat.io
+    # when the pipeline is triggered from the UI. On merge request pipelines they
+    # are empty, so fall back to the project CI/CD variables.
+    - export TESTOMATIO="${testomatio:-$TESTOMATIO}"
+    - export TESTOMATIO_URL="${testomatio_url:-https://app.testomat.io}"
     - export TESTOMATIO_RUN="${run}"
     - npx playwright test --grep "${grep}"
   rules:
