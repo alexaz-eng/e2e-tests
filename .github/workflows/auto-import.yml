@@ -1,0 +1,31 @@
+name: Update Test IDs
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  update-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Import tests and update IDs
+        run: npx check-tests@latest Playwright "**/*{.,_}{test,spec,cy}.js" --update-ids
+        env:
+          TESTOMATIO: ${{ secrets.TESTOMATIO }}
+
+      - name: Commit and push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Updated test IDs"
