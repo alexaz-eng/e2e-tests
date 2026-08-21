@@ -12,6 +12,8 @@ on:
         required: false
       testomatio:
         required: false
+      testomatio_url:
+        required: false
   # Report results into the pull request comment (GitHub Pipe)
   pull_request:
     branches:
@@ -43,4 +45,5 @@ jobs:
         env:
           TESTOMATIO: ${{ github.event.inputs.testomatio || secrets.TESTOMATIO }}
           TESTOMATIO_RUN: ${{ github.event.inputs.run }}
+          TESTOMATIO_URL: ${{ github.event.inputs.testomatio_url || 'https://app.testomat.io' }}
           GH_PAT: ${{ secrets.GITHUB_TOKEN }}
