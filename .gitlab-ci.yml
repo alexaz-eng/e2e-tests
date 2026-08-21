@@ -1,5 +1,15 @@
 stages:
+  - import
   - test
+
+# Keeps Testomat.io in sync with the repository on every push to main
+import_tests:
+  stage: import
+  image: node:20
+  script:
+    - npx check-tests@latest Playwright "**/*{.,_}{test,spec,cy}.js"
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main"
 
 test_job:
   stage: test
